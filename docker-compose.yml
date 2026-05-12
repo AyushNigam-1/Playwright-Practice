@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  playwright-tests:
+    build: .
+    # Pass environment variables to the container (e.g., pointing to a staging URL)
+    environment:
+      - CI=true
+      - BASE_URL=https://staging.myapp.com
+    # CRITICAL: We map the output directories from the container back to our host machine.
+    # If the container dies, we still get our reports and trace files!
+    volumes:
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results
+    # Ensures the container has enough shared memory for browser processes
+    # Without this, Chromium often crashes with "Out of Memory" errors in Docker
+    shm_size: '2gb'

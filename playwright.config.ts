@@ -12,6 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  // globalSetup: require.resolve('./global-setup'),
+  // globalTeardown: require.resolve('./global-teardown'),
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -29,14 +31,23 @@ export default defineConfig({
     baseURL: 'https://example.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
   projects: [
+    // {
+    //   name: 'setup',
+    //   testMatch: /.*\.setup\.ts/,
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        // storageState: '.auth/user.json',
+      },
+      // dependencies: ['setup'],
     },
 
     // {
@@ -44,10 +55,10 @@ export default defineConfig({
     //   use: { ...devices['Desktop Firefox'] },
     // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
