@@ -11,9 +11,25 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.6.2"
+    "@types/node": "^25.9.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^3.0.42",
+    "@browserbasehq/stagehand": "^3.5.0",
+    "dotenv": "^17.4.2",
     "zod": "^4.4.3"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyushNigam-1/Playwright-Practice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AyushNigam-1/Playwright-Practice/issues"
+  },
+  "homepage": "https://github.com/AyushNigam-1/Playwright-Practice#readme"
 }
